@@ -2,17 +2,17 @@ import numpy as np
 import streamlit as st
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.naive_bayes import MultinomialNB
+from sklearn.linear_model import LogisticRegression
 
 
-st.write(''' # Predicción de categoría de Premio Nobel ''')
-st.image("premio-nobel.webp", caption="Su creador fue el inventor sueco Alfred Nobel mediante su testamento en 1895.")
+st.write(''' # Nobel Prize Category Prediction ''')
+st.image("premio-nobel.webp", caption="Every Nobel Prize diploma is a unique, custom-made work of art designed by Swedish and Norwegian artists")
 
 st.header('Texto')
 
 def user_input_features():
   # Entrada
-  texto = st.text_input("Introduce el texto a evaluar")
+  texto = st.text_input("Enter the text to evaluate")
 
   user_input_data = {'Text': texto}
 
@@ -29,11 +29,11 @@ y = nobel.Label
 vect = CountVectorizer()
 X_dtm = vect.fit_transform(X)
 
-nb = MultinomialNB()
-nb.fit(X_dtm, y)
+logreg = LogisticRegression()
+logreg.fit(X_dtm, y)
 
 df_dtm = vect.transform(df['Text'])
-prediction = nb.predict(df_dtm)
+prediction = logreg.predict(df_dtm)
 
 #{'physics':0, 'medicine':1, 'peace':2, 'literature':3, 'chemistry':4, 'economics':5}
 #'Physics', 'Medicine', 'Peace', 'Literature', 'Chemistry', 'Economics'
