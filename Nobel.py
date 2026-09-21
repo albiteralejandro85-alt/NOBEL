@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 st.write(''' # Nobel Prize Category Prediction ''')
 st.image("premio-nobel.webp", caption="Every Nobel Prize diploma is a unique, custom-made work of art designed by Swedish and Norwegian artists")
 
-st.header('Texto')
+st.header('Text')
 
 def user_input_features():
   # Entrada
